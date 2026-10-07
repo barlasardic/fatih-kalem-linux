@@ -1,0 +1,16 @@
+name: Özellik isteği / Feature request
+description: Tahtada gerçekten işe yarayacak bir işlev
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Hangi derste ne eksikti?
+      description: Bir örnek anlatmak, çözüm önermekten daha faydalıdır.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Nasıl çözlense?
+      description: Mümkünse ekran görüntüsü ya da örnek uygulama adı.

@@ -1,0 +1,4 @@
+# Development-only tooling. The application itself needs PyQt6 and nothing else.
+pytest>=8.0
+ruff>=0.6
+pyinstaller>=6.6

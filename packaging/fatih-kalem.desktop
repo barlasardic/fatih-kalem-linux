@@ -1,0 +1,21 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Fatih Kalem
+Name[tr]=Fatih Kalem
+Name[en]=Fatih Kalem
+GenericName=Board annotation
+GenericName[tr]=Tahta üzerine yazma ve çizim
+GenericName[en]=Board annotation
+Comment=Draw over any window on the interactive board
+Comment[tr]=Etkileşimli tahtada her uygulamanın üzerine yazın ve çizin
+Comment[en]=Draw over any window on the interactive board
+Exec=fatih-kalem %U
+Icon=fatih-kalem
+Terminal=false
+Categories=Education;
+Keywords=kalem;tahta;çizim;not;pen;board;annotation;etap;pardus;
+StartupNotify=false
+# X11 only: the overlay needs override-redirect, which Wayland does not allow.
+X-Pardus-Desktop-OnlyX11=true
+X-GNOME-Autostart-enabled=true

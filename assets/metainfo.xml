@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.fatihkalem.linux</id>
+
+  <name>Fatih Kalem</name>
+  <summary>Etkileşimli tahtada her uygulamanın üstüne yazın</summary>
+  <summary xml:lang="en">Write over any window on an interactive board</summary>
+
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+
+  <developer id="org.fatihkalem.linux">
+    <name>Barlas Ardıç</name>
+  </developer>
+
+  <description>
+    <p>
+      Fatih Kalem, ekranın tamamının üstüne saydam bir katman açar; böylece
+      öğretmen ders kitabı PDF'inin, bir videonun, bir web sayfasının veya
+      herhangi bir açık uygulamanın üzerine kalemle yazabilir, vurgulayabilir
+      ve çizebilir — hiçbir şeyi kapatmadan.
+    </p>
+    <p>
+      Özellikler: kalem / foslu kalem / silgi, 24 renk ve 6 kalınlık,
+      basınç duyarlı kalem, geri al-yinele, ekran perdeleme, geometrik
+      şekiller, hazır arka planlar, iki parmak jestleri ve ekran görüntüsü
+      dışa aktarma.
+    </p>
+  </description>
+
+  <launchable type="desktop-id">fatih-kalem.desktop</launchable>
+
+  <categories>
+    <category>Education</category>
+    <category>Graphics</category>
+  </categories>
+
+  <keywords>
+    <keyword>tahta</keyword>
+    <keyword>kalem</keyword>
+    <keyword>çizim</keyword>
+    <keyword>not</keyword>
+    <keyword>etap</keyword>
+    <keyword>pardus</keyword>
+    <keyword>board</keyword>
+    <keyword>annotation</keyword>
+    <keyword>interactive whiteboard</keyword>
+  </keywords>
+
+  <requires>
+    <display_length compare="ge">768</display_length>
+  </requires>
+
+  <recommends>
+    <control>keyboard</control>
+    <control>pointing</control>
+  </recommends>
+
+  <content_rating type="oars-1.1"/>
+
+  <releases>
+    <release version="0.1.0" date="2026-10-07">
+      <description>
+        <p>İlk çekirdek: şeffaf katman, kalem/foslu/silgi, geri al-yinele,
+        ekran görüntüsü dışa aktarma, Türkçe ve İngilizce arayüz.</p>
+      </description>
+    </release>
+  </releases>
+</component>

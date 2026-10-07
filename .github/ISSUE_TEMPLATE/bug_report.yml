@@ -1,0 +1,48 @@
+name: Hata raporu / Bug report
+description: Tahtada ya da masaüstünde karşılaşılan sorun
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Tahta sorunlarında `docs/TESTING-ETAP.md` listesindeki bilgiler de
+        yardımcı olacaktır.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Ne oldu?
+      description: Beklenen davranış ve gerçekleşen davranış.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Nasıl tekrarlanır?
+      description: Adım adım.
+    validations:
+      required: true
+  - type: textarea
+    id: session
+    attributes:
+      label: Oturum bilgisi
+      description: "`./tools/run.sh --print-session` çıktısını yapıştırın."
+      render: shell
+    validations:
+      required: true
+  - type: input
+    id: distro
+    attributes:
+      label: Pardus / dağıtım sürümü
+      placeholder: "Pardus ETAP 23 (Debian 12 tabanlı)"
+    validations:
+      required: true
+  - type: input
+    id: hardware
+    attributes:
+      label: Donanım
+      description: Ekran çözünürlüğü, dokunmatik/pen modeli.
+  - type: textarea
+    id: logs
+    attributes:
+      label: Ekran görüntüsü veya log
+      render: shell

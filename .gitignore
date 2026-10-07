@@ -1,0 +1,26 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# AppImage / packaging artefacts
+*.AppImage
+*.appimage
+AppDir/usr/
+out/
+deploy/
+
+# Editors / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# Runtime data
+*.fkl
+screenshots/

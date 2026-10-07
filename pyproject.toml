@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fatih-kalem-linux"
+version = "0.1.0"
+description = "Fatih Kalem - transparent screen annotation for Pardus ETAP interactive boards"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "GPL-3.0-or-later" }
+authors = [{ name = "Barlas Ardıç" }]
+keywords = ["education", "annotation", "interactive-board", "pardus", "cinnamon", "qt"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: X11 Applications :: Qt",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Natural Language :: Turkish",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Topic :: Education",
+    "Topic :: Multimedia :: Graphics :: Editors",
+]
+dependencies = ["PyQt6>=6.5"]
+
+[project.urls]
+Homepage = "https://github.com/BarlasArdic/fatih-kalem-linux"
+Repository = "https://github.com/BarlasArdic/fatih-kalem-linux"
+Issues = "https://github.com/BarlasArdic/fatih-kalem-linux/issues"
+
+[project.scripts]
+fatih-kalem = "fatih_kalem.__main__:main"
+
+[project.gui-scripts]
+fatih-kalem-gui = "fatih_kalem.__main__:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+fatih_kalem = ["i18n/*.qm", "i18n/*/*.qm"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = ["E501"]

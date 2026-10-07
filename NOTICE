@@ -1,0 +1,25 @@
+Fatih Kalem Linux
+Copyright (C) 2026 Barlas Ardıç
+
+This program is free software under the GNU General Public License v3 or later.
+
+--------------------------------------------------------------------------------
+Attribution / Atıf
+--------------------------------------------------------------------------------
+"Fatih Kalem", Türkiye'de Millî Eğitim Bakanlığı (MEB) FATİH Projesi kapsamında
+kullanılan, TÜBİTAK BİLGEM tarafından geliştirilen bir Windows uygulamasıdır.
+
+"Fatih Kalem Linux" bunun bağımsız, sıfırdan yazılmış bir Linux uygulamasıdır:
+
+  * MEB, TÜBİTAK, BİLGEM veya eTAP projesi tarafından üretilmemiştir,
+    onaylanmamıştır ve desteklenmemektedir.
+  * Fatih Kalem yazılımının kaynak kodu, ikili dosyası veya varlıkları
+    bu depoda bulunmaz ve kullanılmamıştır.
+  * Yalnızca sınıf içi kullanım senaryosu incelenmiş, kendi tasarımı ve koduyla
+    uygulanmıştır.
+
+"Fatih Kalem" adı ve logosu MEB'ye aittir; bu depo, ilgili tarafların
+markalarını kendi ürünü olarak sunma amacı taşımaz.
+
+Pardus, Pardus Kalem (pardus/pardus-pen) ve eTAP, TÜBİTAK BİLGEM / MEB
+projeleridir ve burada yalnızca hedef ortam olarak anılmaktadır.
