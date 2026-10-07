@@ -22,17 +22,51 @@ command -v pyinstaller >/dev/null 2>&1 || {
   echo "pyinstaller is required: pip install pyinstaller" >&2
   exit 1
 }
-command -v appimagetool >/dev/null 2>&1 || \
-  command -v appimagetool-x86_64.AppImage >/dev/null 2>&1 || {
-    echo "appimagetool is required: https://github.com/AppImage/AppImageKit/releases" >&2
-    exit 1
-  }
+# appimagetool may be on PATH, or dropped into bin/ next to this checkout.
+if command -v appimagetool >/dev/null 2>&1; then
+  APPIMAGETOOL="appimagetool"
+elif [ -x "${ROOT}/bin/appimagetool" ]; then
+  APPIMAGETOOL="${ROOT}/bin/appimagetool"
+else
+  echo "appimagetool not found." >&2
+  echo "  sudo apt install appimagetool     # or" >&2
+  echo "  curl -L -o bin/appimagetool https://github.com/AppImage/appimagekit/releases/download/continuous/appimagetool-x86_64.AppImage" >&2
+  exit 1
+fi
 
 echo "==> Cleaning"
 rm -rf "${BUILD_DIR}" "${DIST_DIR}"
 mkdir -p "${DIST_DIR}"
 
 echo "==> Freezing (onedir: faster start, smaller image than onefile)"
+# Qt modules we never use - dropping them roughly halves the image.
+# (Kept in a variable: a comment inside a backslash-continued command would
+# swallow every flag after it.)
+EXCLUDES=(
+  --exclude-module PyQt6.QtWebEngineCore
+  --exclude-module PyQt6.QtWebEngineWidgets
+  --exclude-module PyQt6.QtQuick
+  --exclude-module PyQt6.QtQml
+  --exclude-module PyQt6.Qt3DCore
+  --exclude-module PyQt6.QtMultimedia
+  --exclude-module PyQt6.QtNetwork
+  --exclude-module PyQt6.QtSql
+  --exclude-module PyQt6.QtTest
+  --exclude-module PyQt6.QtDesigner
+  --exclude-module PyQt6.QtHelp
+  --exclude-module PyQt6.QtBluetooth
+  --exclude-module PyQt6.QtCharts
+  --exclude-module PyQt6.QtDataVisualization
+  --exclude-module PyQt6.QtOpenGL
+  --exclude-module PyQt6.QtPdf
+  --exclude-module PyQt6.QtSerialPort
+  --exclude-module PyQt6.QtSensors
+  --exclude-module PyQt6.QtSpatialAudio
+  --exclude-module PyQt6.QtTextToSpeech
+  --exclude-module PyQt6.QtWebChannel
+  --exclude-module PyQt6.QtWebSockets
+)
+
 pyinstaller \
   --noconfirm \
   --clean \
@@ -42,33 +76,11 @@ pyinstaller \
   --specpath "${ROOT}/build" \
   --windowed \
   --onedir \
-  --osx-bundle-identifier org.fatihkalem.linux \
   --paths "${ROOT}/src" \
   --collect-submodules fatih_kalem \
-  # Qt modules we never use - dropping them roughly halves the image.
-  --exclude-module PyQt6.QtWebEngineCore \
-  --exclude-module PyQt6.QtWebEngineWidgets \
-  --exclude-module PyQt6.QtQuick \
-  --exclude-module PyQt6.QtQml \
-  --exclude-module PyQt6.Qt3DCore \
-  --exclude-module PyQt6.QtMultimedia \
-  --exclude-module PyQt6.QtNetwork \
-  --exclude-module PyQt6.QtSql \
-  --exclude-module PyQt6.QtTest \
-  --exclude-module PyQt6.QtDesigner \
-  --exclude-module PyQt6.QtHelp \
-  --exclude-module PyQt6.QtBluetooth \
-  --exclude-module PyQt6.QtCharts \
-  --exclude-module PyQt6.QtDataVisualization \
-  --exclude-module PyQt6.QtOpenGL \
-  --exclude-module PyQt6.QtPdf \
-  --exclude-module PyQt6.QtSerialPort \
-  --exclude-module PyQt6.QtSensors \
-  --exclude-module PyQt6.QtSpatialAudio \
-  --exclude-module PyQt6.QtTextToSpeech \
-  --exclude-module PyQt6.QtWebChannel \
-  --exclude-module PyQt6.QtWebSockets \
-  src/fatih_kalem/__main__.py
+  --collect-all PyQt6 \
+  "${EXCLUDES[@]}" \
+  packaging/entrypoint.py
 
 APPDIR="${ROOT}/build/dist/${APP_NAME}"
 echo "==> Assembling AppDir"
@@ -97,11 +109,7 @@ echo "==> Running desktop-file validation"
 desktop-file-validate "${BUILD_DIR}/${APP_NAME}.desktop" || true
 
 echo "==> Packaging"
-if command -v appimagetool >/dev/null 2>&1; then
-  ARCH="${ARCH}" appimagetool "${BUILD_DIR}" "${APPIMAGE}"
-else
-  appimagetool-x86_64.AppImage "${BUILD_DIR}" "${APPIMAGE}"
-fi
+ARCH="${ARCH}" "${APPIMAGETOOL}" "${BUILD_DIR}" "${APPIMAGE}"
 
 chmod +x "${APPIMAGE}"
 echo
