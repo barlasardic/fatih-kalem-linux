@@ -16,7 +16,15 @@
 - Türkçe ve İngilizce arayüz
 - X11 EWMH yığınlama (`ABOVE`, `STICKY`) ve Wayland kısıtı için uyarı
 - `--sandbox` geliştirme kipi, `--print-session` teşhis aracı
-- 106 test
+- 110 test
+
+### Düzeltilen
+- AppImage build betiğinde yorum satırı, backslash ile devam eden komutun
+  içinde kaldığı için `--exclude-module` bayrakları uygulanmıyordu
+- PyInstaller giriş noktası bağıl import kullandığı için PyQt6 hiç
+  paketlenmiyordu; `packaging/entrypoint.py` eklendi
+- `packaging/install.sh` başka bir dizinden çalıştırıldığında bozuk bir
+  launcher yazıyordu; yollar artık betiğin konumundan çözülüyor
 
 ### Bilinen sınırlar (M2-M4)
 - Renk paleti ızgarası, ayarlar penceresi, perde, şekiller, arka planlar yok

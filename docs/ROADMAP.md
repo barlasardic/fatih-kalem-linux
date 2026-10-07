@@ -37,7 +37,7 @@ Riski en yüksek parçayı önce kanıtlamak için: şeffaf katman + geçirgenli
 - [x] `ui/overlay.py`: katman, geçirgenlik, yakalama, kısayollar, `--sandbox`
 - [x] `export/png.py`: PNG / JPEG / PDF, üzerine yazmama garantisi
 - [x] `i18n.py`: TR + EN
-- [x] 106 test
+- [x] 110 test
 - [x] README, kurulum betiği, .desktop, TESTING-ETAP.md
 
 ### M1'de öğrenilenler
@@ -91,7 +91,7 @@ Riski en yüksek parçayı önce kanıtlamak için: şeffaf katman + geçirgenli
 
 ## M5 — Yayın
 
-- [ ] AppImage (PyInstaller *onedir* + appimagetool, ~90 MB)
+- [x] AppImage (PyInstaller *onedir* + appimagetool, 95 MB) — `scripts/build-appimage.sh`
 - [ ] `nfpm` ile `.deb`
 - [ ] GitHub Actions: PR'da test + ruff, tag'de AppImage + Release
 - [ ] Çeviriler tamamlanmış `.ts`, `pylupdate`/`lrelease` entegrasyonu

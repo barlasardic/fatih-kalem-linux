@@ -81,9 +81,23 @@ alınır, `sudo` gerekmez.
 
 ### AppImage
 
-AppImage paketlemesi M5 sürümünde yayınlanacak. Şimdilik
-[Releases](https://github.com/BarlasArdic/fatih-kalem-linux/releases) sayfasını
-kontrol edin.
+Tek dosya, kurulum yok — Linux'taki `.exe` karşılığı. Pardus ETAP dahil her
+x86_64 dağıtımda çalışır.
+
+```bash
+# Derlemek (yalnızca geliştiriciler için)
+pip install -r .github/requirements-dev.txt
+curl -L -o bin/appimagetool \
+  https://github.com/AppImage/appimagekit/releases/download/continuous/appimagetool-x86_64.AppImage
+chmod +x bin/appimagetool
+./scripts/build-appimage.sh
+
+# Çalıştırmak
+./dist/fatih-kalem-0.1.0-x86_64.AppImage
+```
+
+İndirilen sürümler için [Releases](https://github.com/BarlasArdic/fatih-kalem-linux/releases)
+sayfasına bakın.
 
 ## Komut satırı
 
@@ -134,9 +148,14 @@ Planın tamamı [docs/ROADMAP.md](docs/ROADMAP.md) içinde.
 
 ```bash
 ./tools/run.sh --sandbox        # arayüzü normal pencerede çalıştır
-./scripts/test.sh               # 106 test (pytest varsa o, yoksa unittest)
+./scripts/test.sh               # 110 test (pytest varsa o, yoksa unittest)
 QT_QPA_PLATFORM=xcb ./tools/run.sh   # bu makinede gerçek X11 katmanı
+./tools/diagnose.sh             # tahta teşhisi: oturum, dokunmatik, ekran, ayarlar
+./scripts/update-translations.sh
 ```
+
+`tools/diagnose.sh` çıktısını doğrudan bir hata raporuna yapıştırabilirsiniz —
+destek isteyen öğretmenin ilk yapması gereken budur.
 
 Kod düzeni:
 
@@ -213,7 +232,7 @@ sudo apt install python3-pyqt6
 ### Development
 
 ```bash
-./scripts/test.sh                          # 106 tests, stdlib unittest
+./scripts/test.sh                          # 110 tests, stdlib unittest
 QT_QPA_PLATFORM=xcb ./tools/run.sh         # exercise the real X11 overlay
 ```
 
