@@ -23,4 +23,8 @@ deploy/
 
 # Runtime data
 *.fkl
-screenshots/bin/
+screenshots/
+
+# Locally downloaded build tools (appimagetool is ~9 MB)
+bin/
+
